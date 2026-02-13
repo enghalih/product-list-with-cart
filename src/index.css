@@ -1,0 +1,148 @@
+@import "tailwindcss";
+
+@import url('https://fonts.googleapis.com/css2?family=Red+Hat+Text:ital,wght@0,300..700;1,300..700&display=swap');
+
+@theme {
+  --color-*: initial;
+  /* Colors */
+  --color-white: #ffffff;
+  --color-black: #000000;
+
+  --color-primary-red: #c73b0f;
+  --color-primary-green: #1ea575;
+
+  --color-rose-900: #260f08;
+  --color-rose-500: #87635a;
+  --color-rose-400: #ad8a85;
+  --color-rose-300: #caafa7;
+  --color-rose-100: #f5eeec;
+  --color-rose-50: #fcf8f6;
+
+  /* Typography - Font Family */
+  --font-redhat: "Red Hat Text", sans-serif;
+
+  /* Text Presets as Custom Utilities */
+  /* Catatan: Di v4, kita bisa mendaftarkan utility custom di sini */
+}
+
+@layer utilities {
+  .text-preset-1 {
+    font-family: var(--font-redhat);
+    font-size: 2.5rem;
+    font-weight: 700;
+    line-height: 1.2; /* 120% */
+    letter-spacing: 0px;
+  }
+
+  .text-preset-2 {
+    font-family: var(--font-redhat);
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1.25; /* 125% */
+    letter-spacing: 0px;
+  }
+
+  .text-preset-3 {
+    font-family: var(--font-redhat);
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.5; /* 150% */
+    letter-spacing: 0px;
+  }
+
+  .text-preset-4 {
+    font-family: var(--font-redhat);
+    font-size: 0.875rem;
+    font-weight: 400;
+    line-height: 1.5;
+    letter-spacing: 0px;
+  }
+
+  .text-preset-4-bold {
+    font-family: var(--font-redhat);
+    font-size: 0.875rem;
+    font-weight: 600;
+    line-height: 1.5;
+    letter-spacing: 0px;
+  }
+}
+
+@layer base {
+  /* 1. Use a more-intuitive box-sizing model */
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  /* 2. Remove default margin */
+  *:not(dialog) {
+    margin: 0;
+  }
+
+  /* 3. Enable keyword animations */
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      interpolate-size: allow-keywords;
+    }
+  }
+
+  body {
+    /* 4. Add accessible line-height */
+    line-height: 1.5;
+    /* 5. Improve text rendering */
+    -webkit-font-smoothing: antialiased;
+    background-color: var(--color-rose-50);
+    color: var(--color-rose-900);
+  }
+
+  /* 6. Improve media defaults */
+  img,
+  picture,
+  video,
+  canvas,
+  svg {
+    display: block;
+    max-width: 100%;
+  }
+
+  /* 7. Inherit fonts for form controls */
+  input,
+  button,
+  textarea,
+  select {
+    font: inherit;
+  }
+
+  /* 8. Avoid text overflows */
+  p,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    overflow-wrap: break-word;
+  }
+
+  /* 9. Improve line wrapping */
+  p {
+    text-wrap: pretty;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    text-wrap: balance;
+  }
+
+  /*
+  10. Create a root stacking context
+*/
+  #root,
+  #__next {
+    isolation: isolate;
+  }
+}
