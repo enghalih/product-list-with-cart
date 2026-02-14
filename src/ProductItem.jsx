@@ -12,11 +12,11 @@ export default function ProductItem({ name, category, price, image }) {
     <article className="grid gap-9.5">
       <div className="relative">
         <picture>
-          <source media="(min-width: 64rem)" srcset={image.desktop} />
-          <source media="(min-width: 48rem)" srcset={image.tablet} />
+          <source media="(min-width: 64rem)" srcSet={image.desktop} />
+          <source media="(min-width: 48rem)" srcSet={image.tablet} />
         </picture>
         <img src={image.mobile} alt="" className="rounded-lg" />
-        <AddToCart className="absolute left-1/2 -translate-x-1/2 -translate-y-1/2" />
+        <AddToCart name={name} className="absolute left-1/2 -translate-x-1/2 -translate-y-1/2" />
       </div>
 
       <div className="grid gap-1">

@@ -1,7 +1,5 @@
 @import "tailwindcss";
 
-@import url('https://fonts.googleapis.com/css2?family=Red+Hat+Text:ital,wght@0,300..700;1,300..700&display=swap');
-
 @theme {
   --color-*: initial;
   /* Colors */
@@ -9,6 +7,7 @@
   --color-black: #000000;
 
   --color-primary-red: #c73b0f;
+  --color-primary-red-hover: #952c0b;
   --color-primary-green: #1ea575;
 
   --color-rose-900: #260f08;
@@ -19,52 +18,55 @@
   --color-rose-50: #fcf8f6;
 
   /* Typography - Font Family */
-  --font-redhat: "Red Hat Text", sans-serif;
+  --font-redhat: "Red Hat Text";
 
   /* Text Presets as Custom Utilities */
   /* Catatan: Di v4, kita bisa mendaftarkan utility custom di sini */
 }
 
-@layer utilities {
-  .text-preset-1 {
-    font-family: var(--font-redhat);
-    font-size: 2.5rem;
-    font-weight: 700;
-    line-height: 1.2; /* 120% */
-    letter-spacing: 0px;
-  }
+/* Tailwind v4 Style */
 
-  .text-preset-2 {
-    font-family: var(--font-redhat);
-    font-size: 1.5rem;
-    font-weight: 700;
-    line-height: 1.25; /* 125% */
-    letter-spacing: 0px;
-  }
+@utility text-preset-1 {
+  font-family: var(--font-redhat);
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: 0px;
+}
 
-  .text-preset-3 {
-    font-family: var(--font-redhat);
-    font-size: 1rem;
+@utility text-preset-2 {
+  font-family: var(--font-redhat);
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: 0px;
+}
+
+@utility text-preset-3 {
+  font-family: var(--font-redhat);
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.5;
+  letter-spacing: 0px;
+}
+
+@utility text-preset-4 {
+  font-family: var(--font-redhat);
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: 0px;
+
+  /* Kamu bisa grouping variasi bold di dalam sini pakai nesting */
+  &.bold {
     font-weight: 600;
-    line-height: 1.5; /* 150% */
-    letter-spacing: 0px;
   }
+}
 
-  .text-preset-4 {
-    font-family: var(--font-redhat);
-    font-size: 0.875rem;
-    font-weight: 400;
-    line-height: 1.5;
-    letter-spacing: 0px;
-  }
-
-  .text-preset-4-bold {
-    font-family: var(--font-redhat);
-    font-size: 0.875rem;
-    font-weight: 600;
-    line-height: 1.5;
-    letter-spacing: 0px;
-  }
+@utility after-starter {
+  content: "";
+  position: absolute;
+  inset: 0;
 }
 
 @layer base {
@@ -94,6 +96,7 @@
     -webkit-font-smoothing: antialiased;
     background-color: var(--color-rose-50);
     color: var(--color-rose-900);
+    scrollbar-gutter: stable;
   }
 
   /* 6. Improve media defaults */
