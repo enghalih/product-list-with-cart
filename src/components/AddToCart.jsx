@@ -17,7 +17,7 @@ export default function AddToCart({ className, name }) {
         onClick={() => handleAddToCart(name)}
       >
         <img src={addToCartIcon} alt="" />
-        Add to Cart
+        Add to Cart <span className="sr-only">{name}</span>
       </button>
     );
   } else {

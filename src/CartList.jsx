@@ -39,9 +39,9 @@ export default function CartList({ products }) {
     content = (
       <>
         <div className="grid gap-6">
-          {cart.map((item, index) => (
+          {cart.map((item) => (
             <CartItem
-              key={index}
+              key={item.name}
               name={item.name}
               quantity={item.quantity}
               products={products}
@@ -69,11 +69,11 @@ export default function CartList({ products }) {
   }
 
   return (
-    <div className="bg-white p-6 flex flex-col gap-6 rounded-xl justify-center h-min">
+    <aside className="bg-white p-6 flex flex-col gap-6 rounded-xl justify-center h-min">
       <h2 className="text-preset-2 text-primary-red">
         Your Cart ({totalQuantity})
       </h2>
       {content}
-    </div>
+    </aside>
   );
 }

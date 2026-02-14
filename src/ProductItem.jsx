@@ -1,7 +1,6 @@
 import AddToCart from "./components/AddToCart";
 
 export default function ProductItem({ name, category, price, image }) {
-
   const formattedPrice = new Intl.NumberFormat("en-US", {
     style: "currency",
     currency: "USD",
@@ -14,9 +13,12 @@ export default function ProductItem({ name, category, price, image }) {
         <picture>
           <source media="(min-width: 64rem)" srcSet={image.desktop} />
           <source media="(min-width: 48rem)" srcSet={image.tablet} />
+          <img src={image.mobile} alt={`image of ${name}`} className="rounded-lg" />
         </picture>
-        <img src={image.mobile} alt="" className="rounded-lg" />
-        <AddToCart name={name} className="absolute left-1/2 -translate-x-1/2 -translate-y-1/2" />
+        <AddToCart
+          name={name}
+          className="absolute left-1/2 -translate-x-1/2 -translate-y-1/2"
+        />
       </div>
 
       <div className="grid gap-1">

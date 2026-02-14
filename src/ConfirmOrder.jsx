@@ -20,7 +20,7 @@ export default function ConfirmOrder({ cart, products, isOpen, onClose, totalPri
     >
       <div
         onClick={(e) => e.stopPropagation()}
-        className="bg-white grid gap-8 py-10 px-6 sm:px-10 rounded-xl"
+        className="bg-white grid gap-8 py-10 px-6 my-4 sm:px-10 rounded-xl"
       >
         <div className="grid gap-6">
           <img src={OrderIcon} alt="" />
@@ -34,9 +34,9 @@ export default function ConfirmOrder({ cart, products, isOpen, onClose, totalPri
 
         <div className="grid gap-6 p-6 bg-rose-50">
           <ul className="grid gap-4">
-            {cart.map((item, index) => (
+            {cart.map((item) => (
               <ConfirmItem
-                key={index}
+                key={item.name}
                 name={item.name}
                 quantity={item.quantity}
                 products={products}
