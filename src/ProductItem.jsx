@@ -1,31 +1,30 @@
 import AddToCart from "./components/AddToCart";
+import formatPrice from "./components/formatterPrice";
 
 export default function ProductItem({ name, category, price, image }) {
-  const formattedPrice = new Intl.NumberFormat("en-US", {
-    style: "currency",
-    currency: "USD",
-    minimumFractionDigits: 2, // Memastikan ada 2 angka di belakang koma (0.00)
-  }).format(price);
+  const formattedPrice = formatPrice(price);
 
   return (
-    <article className="grid gap-9.5">
-      <div className="relative">
-        <picture>
-          <source media="(min-width: 64rem)" srcSet={image.desktop} />
-          <source media="(min-width: 48rem)" srcSet={image.tablet} />
-          <img src={image.mobile} alt={`image of ${name}`} className="rounded-lg" />
-        </picture>
+    <article className="grid gap-2 md:gap-9.5">
+      <div className="relative w-full aspect-square md:aspect-auto">
+        <img
+          src={image.desktop}
+          alt={`image of ${name}`}
+          className="rounded-lg w-full h-full object-cover"
+        />
         <AddToCart
           name={name}
-          className="absolute left-1/2 -translate-x-1/2 -translate-y-1/2"
+          className="hidden md:flex md:absolute left-1/2 -translate-x-1/2 -translate-y-1/2 z-10"
         />
       </div>
 
       <div className="grid gap-1">
         <p className="text-rose-500 text-preset-4">{category}</p>
-        <h3 className="text-rose-900 text-preset-3">{name}</h3>
+        <h3 className="text-rose-900 text-preset-3 truncate">{name}</h3>
         <p className="text-primary-red text-preset-3">{formattedPrice}</p>
       </div>
+
+      <AddToCart name={name} className="md:hidden mt-auto" />
     </article>
   );
 }

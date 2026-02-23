@@ -13,18 +13,20 @@ export default function AddToCart({ className, name }) {
     content = (
       <button
         type="button"
-        className={`${className} bg-white p-3 border border-rose-400 flex items-center gap-2 rounded-full min-w-40 justify-center hover:text-primary-red hover:border-primary-red`}
+        className={`${className} bg-white p-2.5 sm:p-3 border border-rose-400 flex items-center gap-2 rounded-full w-full md:min-w-40 md:w-fit justify-center hover:text-primary-red hover:border-primary-red transition-all`}
         onClick={() => handleAddToCart(name)}
       >
-        <img src={addToCartIcon} alt="" />
-        Add to Cart <span className="sr-only">{name}</span>
+        <img src={addToCartIcon} alt="" className="shrink-0" />
+        <span className="text-preset-4-bold whitespace-nowrap">
+          Add to Cart
+        </span>
+        <span className="sr-only">{name}</span>
       </button>
     );
   } else {
     content = (
       <div
-        type="button"
-        className={`${className} bg-primary-red p-3 flex justify-between items-center rounded-full min-w-40`}
+        className={`${className} bg-primary-red p-2.5 sm:p-3 flex justify-between items-center rounded-full w-full md:min-w-40 md:w-fit`}
       >
         <SubtractIcon onClick={() => handleSubtractToCart(name)} />
         <p className="text-preset-4-bold text-white">{currentItem.quantity}</p>

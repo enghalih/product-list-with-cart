@@ -5,6 +5,7 @@ import CartItem from "./CartItem";
 import CarbonInfo from "./components/CarbonInfo";
 import Button from "./components/Button";
 import ConfirmOrder from "./ConfirmOrder";
+import formatPrice from "./components/formatterPrice";
 
 export default function CartList({ products }) {
   const [isOrder, setIsOrder] = useState(false);
@@ -51,29 +52,37 @@ export default function CartList({ products }) {
         <div className="w-full h-px bg-rose-100"></div>
         <div className="flex justify-between">
           <p className="text-preset-4">Order Total</p>
-          <p className="text-preset-2">${totalPrice.toFixed(2)}</p>
+          <p className="text-preset-2">{formatPrice(totalPrice)}</p>
         </div>
         <CarbonInfo />
         <Button onClick={() => handleConfirmOrder(cart, products)}>
           Confirm Order
         </Button>
-        <ConfirmOrder
-          cart={cart}
-          products={products}
-          isOpen={isOrder}
-          onClose={handleCloseOrder}
-          totalPrice={totalPrice}
-        />
       </>
     );
   }
 
   return (
-    <aside className="bg-white p-6 flex flex-col gap-6 rounded-xl justify-center h-min">
-      <h2 className="text-preset-2 text-primary-red">
-        Your Cart ({totalQuantity})
-      </h2>
-      {content}
-    </aside>
+    <>
+      <aside className="hidden bg-white p-6 md:flex flex-col gap-6 rounded-xl justify-center h-min">
+        <h2 className="text-preset-2 text-primary-red">
+          Your Cart ({totalQuantity})
+        </h2>
+        {content}
+      </aside>
+      <Button
+        onClick={() => handleConfirmOrder(cart, products)}
+        className={`md:hidden fixed bottom-4 left-1/2 -translate-x-1/2 w-9/10 ${cart.length === 0 ? "hidden" : ""}`}
+      >
+        Confirm Order ({totalQuantity})
+      </Button>
+      <ConfirmOrder
+        cart={cart}
+        products={products}
+        isOpen={isOrder}
+        onClose={handleCloseOrder}
+        totalPrice={totalPrice}
+      />
+    </>
   );
 }

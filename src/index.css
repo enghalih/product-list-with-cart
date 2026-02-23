@@ -1,11 +1,7 @@
 @import "tailwindcss";
 
 @theme {
-  --color-*: initial;
-  /* Colors */
-  --color-white: #ffffff;
-  --color-black: #000000;
-
+  /* Brand Colors */
   --color-primary-red: #c73b0f;
   --color-primary-red-hover: #952c0b;
   --color-primary-green: #1ea575;
@@ -19,9 +15,6 @@
 
   /* Typography - Font Family */
   --font-redhat: "Red Hat Text";
-
-  /* Text Presets as Custom Utilities */
-  /* Catatan: Di v4, kita bisa mendaftarkan utility custom di sini */
 }
 
 /* Tailwind v4 Style */
